@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, View
@@ -14,7 +13,7 @@ class StudentDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView
     template_name = "dashboard/student_dashboard.html"
 
     def test_func(self):
-        return self.request.user.role == User.Role.STUDENT
+        return self.request.user.role == User.Role.USER
 
 class AdminDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "dashboard/admin_dashboard.html"
@@ -27,8 +26,3 @@ class AdminDashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         context["total_users"] = User.objects.count()
         context["users"] = User.objects.all()
         return context
-=======
-from django.shortcuts import render
-
-# Create your views here.
->>>>>>> 3e6c266b6a1ea7323b10a84a55fb40074fbd0936
