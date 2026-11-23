@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<<<<<<< HEAD
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StudySync</title>
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+            <span>Hi, {{ user.username }}!</span>
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Log in</a> |
+            <a href="{% url 'signup' %}">Sign up</a>
+        {% endif %}
+    </nav>
+    <hr>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li><strong>{{ message }}</strong></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
+=======
+<html>
+    <head><title>CampusConnect</title></head>
+    <body>
+        <nav>
+            {% if user.is_authenticated %}
+            Hi, {{ user.username }}!
+            <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}">Log in</a>
+            <a href="{% url 'signup' %}">Sign up</a>
+            {% endif %}
+        </nav>
+        <main>{% block content %}{% endblock %}</main>
+    </body>
+</html>
+>>>>>>> 3e6c266b6a1ea7323b10a84a55fb40074fbd0936

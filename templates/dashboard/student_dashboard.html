@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Student Dashboard</h2>
+<p>Welcome back, <strong>{{ user.first_name|default:user.username }}</strong>!</p>
+
+<nav>
+    <strong>Student Menu:</strong>
+    <a href="{% url 'student_dashboard' %}">My Study Home</a> |
+    <a href="#">My Courses</a>
+</nav>
+<hr>
+
+<ul>
+    <li><strong>Role:</strong> {{ user.get_role_display }}</li>
+    <li><strong>Email:</strong> {{ user.email }}</li>
+    <li><strong>Bio:</strong> {{ user.profile.bio|default:"No bio added yet." }}</li>
+</ul>
+{% endblock %}
